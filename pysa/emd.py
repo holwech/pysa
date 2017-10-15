@@ -1,7 +1,7 @@
 import numpy as np
 import scipy.signal as signal
 import scipy.interpolate as interpolate
-import utils
+from . import utils
 
 
 def emd(x, min_data, max_data, max_modes=10, max_siftings=200):
