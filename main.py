@@ -56,7 +56,7 @@ if __name__ == '__main__':
     component_of_interest = np.zeros(len(sinus_with_noise), dtype=np.float64)
     for i in range(len(imfs)):
         imfs[i] = utils.reverse_normalization(imfs[i], min_data, max_data, len(sinusoidal_wave))
-        print np.std(imfs[i])
+        print(np.std(imfs[i]))
         if i >= 2:
             component_of_interest += imfs[i]
 
