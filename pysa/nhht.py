@@ -1,6 +1,6 @@
 import numpy as np
 import scipy.signal as signal
-import utils
+from . from . import utils
 
 
 def nhht(imfs, fs):

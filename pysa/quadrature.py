@@ -1,7 +1,7 @@
 import numpy as np
 import scipy.interpolate as interpolate
 import scipy.signal as signal
-import utils
+from . import utils
 
 
 def gaussian_quadrature(imfs, fs):
