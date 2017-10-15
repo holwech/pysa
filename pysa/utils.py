@@ -39,7 +39,7 @@ def reverse_normalization_one_to_minus_one(data_norm, min_data, max_data, n_samp
     data_original = np.zeros(n_samples)
 
     for i in range(n_samples):
-        data_original[i] = ((data_norm[i] + 1)/2)*diff + min_data
+        data_original[i] = ((data_norm[i] + 1)//2)*diff + min_data
 
     return data_original
 

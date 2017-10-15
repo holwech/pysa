@@ -240,7 +240,7 @@ def plot_hilbert_spectra_log(time, frequency, amplitude, title, plotter=plt, fs=
             amplitude[k] = utils.normalize_data(amplitude[k], min_data, max_data, n_samples)
             min_log_power = min(amplitude[k]*amplitude[k])
             if min_log_power < absolute_min_log_power:
-                print min_log_power
+                print(min_log_power)
                 absolute_min_log_power = min_log_power
 
     absolute_min_log_power -= 0.30*abs(absolute_min_log_power)
@@ -252,7 +252,7 @@ def plot_hilbert_spectra_log(time, frequency, amplitude, title, plotter=plt, fs=
 
     # Enter loop if more than one IMF exists
     if isinstance(frequency[0], np.ndarray):
-        print 'Plotting multiple IMFs in Hilbert Spectra.'
+        print('Plotting multiple IMFs in Hilbert Spectra.')
         for i in range(len(frequency)):
 
             # Round the frequency to the nearest (results in OK resolution if scale_freq > 1, eg scale_freq=10)
@@ -348,7 +348,7 @@ def plot_hilbert_spectra_power(time, frequency, amplitude, title, plotter=plt, f
     if baseline_correct:
         if isinstance(frequency[0], np.ndarray):
             for k in range(len(amplitude)):
-                amplitude[k] /= np.mean(amplitude[k, :int(fs*stimulus_onset_in_ms/1000)])
+                amplitude[k] /= np.mean(amplitude[k, :int(fs*stimulus_onset_in_ms//1000)])
                 # amplitude[k] = [0 if i < 0 else i for i in amplitude[k]]
 
     absolute_min_power = 100.0
@@ -369,7 +369,7 @@ def plot_hilbert_spectra_power(time, frequency, amplitude, title, plotter=plt, f
 
     # Enter loop if more than one IMF exists
     if isinstance(frequency[0], np.ndarray):
-        print 'Plotting multiple IMFs in Hilbert Spectra.'
+        print('Plotting multiple IMFs in Hilbert Spectra.')
         for i in range(len(frequency)):
 
             # Round the frequency to the nearest (results in OK resolution if scale_freq > 1, eg scale_freq=10)
@@ -449,7 +449,7 @@ def plot_single_data_sliding(data_array, events, fs=500.0, label='', subtract_me
     :return:
     '''
     n_sec_per_frame = n_trial_per_frame * n_sec_per_trial
-    n_frames = 3*len(events)/n_sec_per_frame
+    n_frames = 3*len(events)//n_sec_per_frame
 
     xdata = np.linspace(0, n_sec_per_frame, n_sec_per_frame*fs)
     # set up figure
@@ -532,7 +532,7 @@ def plot_data_sliding(data_matrix, events, fs=500.0, offset=50.0, n_sec_per_tria
     :return:
     '''
     n_sec_per_frame = n_trial_per_frame * n_sec_per_trial
-    n_frames = len(events)/n_trial_per_frame
+    n_frames = len(events)//n_trial_per_frame
     n_channels = len(data_matrix)
 
     xdata = np.linspace(0, n_sec_per_frame, n_sec_per_frame*fs)
