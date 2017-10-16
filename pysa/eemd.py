@@ -15,7 +15,7 @@ def eemd(x, noise_std, max_modes, max_siftings, ensembles, ensembles_per_process
     :param ensembles_per_process: Number of ensebles per process
     :return:
     '''
-    n_processes = ensembles / ensembles_per_process
+    n_processes = ensembles // ensembles_per_process
     data_length = len(x)
     noise_std *= np.std(x)
     output = Queue(n_processes)
