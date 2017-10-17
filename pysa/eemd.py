@@ -57,7 +57,7 @@ def ensemble_all_processes(data_length, results, n_processes, ensembles, max_mod
     :param max_modes:
     :return:
     '''
-    imfs = np.zeros((max_modes + 1, data_length))
+    imfs = np.zeros((np.size(results, 0), data_length))
 
     for j in range(n_processes):
         imfs = np.add(imfs, results[j])
