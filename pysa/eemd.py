@@ -57,7 +57,7 @@ def ensemble_all_processes(data_length, results, n_processes, ensembles, max_mod
     :param max_modes:
     :return:
     '''
-    imfs = np.zeros((np.size(results, 0), data_length))
+    imfs = np.zeros((len(results[0]), data_length))
 
     for j in range(n_processes):
         imfs = np.add(imfs, results[j])
@@ -85,6 +85,7 @@ def ensemble_process(x, data_length, max_modes, max_siftings, noise_std, ensembl
         noise = np.multiply(np.random.randn(data_length), noise_std)
         noise_assisted_data = np.add(x, noise)
         ensemble = emd.emd(noise_assisted_data, max_modes, max_siftings)
+        imfs = np.resize(imfs, ensemble.shape)
         imfs = np.add(imfs, ensemble)
 
     output.put(imfs)
