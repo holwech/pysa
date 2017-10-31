@@ -3,9 +3,9 @@ import scipy.signal as signal
 from . import utils
 
 
-def nhht(imfs, fs):
+def nhht(imfs, sample_frequency):
     n_imfs = len(imfs)
-    max_freq = fs / 2.0
+    max_freq = sample_frequency / 2.0
     amplitudes = np.zeros(imfs.shape, np.float32)
     scaled_imfs = np.zeros(imfs.shape, np.float32)
     frequencies = np.zeros(imfs.shape, np.float32)
@@ -17,7 +17,7 @@ def nhht(imfs, fs):
         amplitudes[i] = am
         frequencies[i] = np.r_[
             0.0,
-            0.5*(np.angle(-h[2:]*np.conj(h[0:-2]))+np.pi)/(2.0*np.pi) * np.float32(fs),
+            0.5*(np.angle(-h[2:]*np.conj(h[0:-2]))+np.pi)/(2.0*np.pi) * np.float32(sample_frequency),
             0.0
         ]
 
