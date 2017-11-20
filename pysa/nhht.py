@@ -2,8 +2,13 @@ import numpy as np
 import scipy.signal as signal
 from . import utils
 
-
+# Calculates the normalized HHt.
+# Takes in all the IMFs, but not the residue. That is; the last row of the the return value
+# of the EMD function should not be included in the input variable "imfs"
 def nhht(imfs, sample_frequency):
+    # Non-optimal fix to some array overwrite issue
+    imfs = np.copy(imfs)
+
     n_imfs = len(imfs)
     max_freq = sample_frequency / 2.0
     amplitudes = np.zeros(imfs.shape, np.float32)
